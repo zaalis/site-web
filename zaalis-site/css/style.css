@@ -1,0 +1,565 @@
+﻿* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  /* optionnel pour éviter sélection du texte sur mobile */
+}
+
+:root {
+  --bg: #000;
+  --panel-bg: rgba(255, 255, 255, 0.025);
+  --panel-border: rgba(255, 255, 255, 0.06);
+  --accent: #4898ff;
+  --soft-white: rgba(255, 255, 255, 0.92);
+  --glass-blur: 10px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: #FFFFFF;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- GLASS BASE (appliqué aux éléments demandés) ---------- */
+.glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+  border: 1px solid var(--panel-border);
+  backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), 0 1px 0 rgba(255, 255, 255, 0.02) inset;
+}
+
+/* ---------- HEADER / NAVBAR (glass, flottante, légèrement décallée) ---------- */
+header {
+  /* garde la structure existante */
+  position: fixed;
+  width: calc(100% - 40px);
+  /* laisse un petit espace latéral */
+  left: 20px;
+  right: 20px;
+  top: 12px;
+  /* décalée légèrement du haut */
+  z-index: 1000;
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  /* STYLE LIQUID GLASS EXACT (PORTAGE 1:1) */
+  border-radius: 19.32px;
+  isolation: isolate;
+  box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.2), 0 0 5px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: none;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 19.32px;
+  backdrop-filter: blur(6px) saturate(220%) brightness(1.2);
+  -webkit-backdrop-filter: blur(6px) saturate(220%) brightness(1.2);
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.03) 100%);
+  background-size: 200% 200%;
+  animation: glassShine 8s ease-in-out infinite;
+  box-shadow: inset 0 0 15px -5px #000000, inset 0 0 12px rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 19.32px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 40%);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  filter: url(#glass-distortion);
+  -webkit-filter: url(#glass-distortion);
+  pointer-events: none;
+}
+
+/* Ensure content sits above the glass layers */
+header>* {
+  position: relative;
+  z-index: 1;
+}
+
+header:active,
+header:focus-within {
+  transform: none;
+  /* Désactivation des effets de mouvement si non désirés, mais gardons structure */
+}
+
+.burger-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo img {
+  height: 40px;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.burger-icon {
+  position: relative;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  display: none;
+  /* cacher par défaut en desktop */
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.burger-icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.burger-icon span:nth-child(1) {
+  top: 0;
+}
+
+.burger-icon span:nth-child(2) {
+  top: 8px;
+}
+
+.burger-icon span:nth-child(3) {
+  top: 16px;
+}
+
+.burger-icon.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 8px;
+}
+
+.burger-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger-icon.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 8px;
+}
+
+/* menu */
+.burger-menu {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 12px;
+  align-items: center;
+}
+
+.burger-menu li {
+  margin: 0 10px;
+}
+
+.burger-menu a,
+.burger-menu select {
+  color: white;
+  text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lang-switch {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+}
+
+.lang-switch:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.burger-menu li a {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  header {
+    width: calc(100% - 28px);
+    left: 14px;
+    right: 14px;
+    padding: 12px 16px;
+  }
+
+  .burger-icon {
+    display: block;
+  }
+
+  .burger-menu {
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.78));
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 250px;
+    padding: 1rem;
+    z-index: 1000;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .burger-menu.show {
+    display: flex;
+  }
+
+  .burger-menu li {
+    margin: 10px 0;
+  }
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  padding: 100px 20px 40px;
+  overflow: hidden;
+}
+
+/* GLASS EFFECT REMOVED FROM HERE */
+.hero.glass {
+  width: min(1100px, 94%);
+  margin: 0 auto;
+  padding: 80px 48px;
+  border-radius: 18px;
+  /* Removed glass properties: background, border, backdrop-filter, box-shadow */
+  z-index: 2;
+}
+
+/* Texte hero : desktop et mobile */
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  margin-bottom: 30px;
+  z-index: 1;
+  color: var(--soft-white);
+  text-shadow: 0 2px 30px rgba(72, 152, 255, 0.06);
+}
+
+.desktop-text {
+  display: inline;
+}
+
+.mobile-text {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  .desktop-text {
+    display: none;
+  }
+
+  .mobile-text {
+    display: inline;
+  }
+
+  .hero.glass {
+    padding: 36px 20px;
+    border-radius: 12px;
+  }
+}
+
+.hero button {
+  background-color: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-top: 20px;
+  z-index: 1;
+  box-shadow: 0 8px 30px rgba(72, 152, 255, 0.12);
+}
+
+.hero button:hover {
+  transform: scale(1.05) rotateX(5deg);
+  box-shadow: 0 0 15px #4898ff, 0 0 30px #4898ff inset;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+section {
+  padding: 100px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Section-flex garde la dispo */
+.section-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.section-flex.reverse {
+  flex-direction: row-reverse;
+}
+
+.section-image {
+  flex: 1 1 45%;
+}
+
+.section-image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* GLASS EFFECT REMOVED FROM HERE */
+.section-text {
+  flex: 1 1 50%;
+  padding: 28px;
+  border-radius: 14px;
+  /* Removed glass properties */
+}
+
+h2 {
+  color: var(--accent);
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+p,
+li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #e9eef8;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #111;
+  font-size: 14px;
+}
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.burger-icon.not-active span {
+  transform: none;
+  opacity: 1;
+}
+
+/* GLASS EFFECT REMOVED FROM HERE */
+section#roadmap,
+section#createur,
+section#contact {
+  /* Removed glass properties */
+  border-radius: 14px;
+  padding: 54px 40px;
+  margin: 40px auto 80px;
+  max-width: 1100px;
+}
+
+section#roadmap h2,
+section#createur h2,
+section#contact h2 {
+  margin-top: 0;
+}
+
+/* small responsiveness tweaks to keep layout identical but neat on small screens */
+@media (max-width: 1024px) {
+  .section-flex {
+    gap: 24px;
+  }
+
+  .section-text {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 20px;
+  }
+
+  .section-image,
+  .section-text {
+    flex: 1 1 100%;
+  }
+
+  header {
+    top: 10px;
+  }
+}
+
+/* keep small visual affordances identical to original */
+.active {
+  color: var(--accent);
+}
+
+/* ---------- FULL SCREEN PC ---------- */
+@media (min-width: 1025px) {
+  .hero {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    /* optionnel, pour full-screen */
+  }
+
+  .hero.glass {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 80px 48px;
+    /* conserve padding interne */
+  }
+
+  section#roadmap,
+  section#createur,
+  section#contact {
+    width: 100%;
+    max-width: 1100px;
+    /* limite la largeur pour que ce soit centré et lisible */
+    margin: 40px auto 80px;
+    /* centre horizontalement et ajoute un spacing vertical */
+    padding: 54px 40px;
+    /* garde padding interne */
+    /* Removed glass properties */
+    border-radius: 14px;
+  }
+
+  .section-flex {
+    max-width: 100%;
+  }
+}
+
+@keyframes glassShine {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =========================================
+   LIQUID GLASS SELECTION (Apple Style)
+   ========================================= */
+
+/* 1. Réactivation intelligente de la sélection pour le contenu */
+body, p, h1, h2, h3, h4, h5, h6, li, span, div, a, section, article {
+    user-select: text; /* Permet de sélectionner le texte */
+    -webkit-user-select: text;
+}
+
+/* 2. Protection stricte : Navbar et Burger restent non-sélectionnables */
+header, 
+header *, 
+.burger-container, 
+.burger-container *, 
+.burger-menu, 
+.burger-menu *,
+.logo,
+.burger-icon {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
+/* 3. L'effet Visuel "Liquid Blue" */
+::selection {
+    background: rgba(0, 113, 227, 0.35); /* Bleu Apple natif avec transparence "Verre" */
+    color: #ffffff; /* Texte blanc pur */
+    text-shadow: 0 0 12px rgba(0, 113, 227, 0.6); /* Micro-glow pour l'effet liquide */
+}
+
+/* Support Firefox */
+::-moz-selection {
+    background: rgba(0, 113, 227, 0.35);
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(0, 113, 227, 0.6);
+}

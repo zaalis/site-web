@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/favicon-zaalis.png">
+  <title>zaalis - Blockchain Décentralisée</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMRZW083F3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-ZMRZW083F3');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="burger-container">
+      <div class="logo">
+        <img src="images/logo-zaalis.jpg" alt="Logo Zaalis" />
+      </div>
+      <div class="burger-icon not-active" id="burgerBtn" onclick="toggleMenu(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <ul class="burger-menu" id="burgerMenu">
+      <li><a href="#accueil" class="active">Home</a></li>
+      <li><a href="#vision">Our Vision</a></li>
+      <li><a href="#fonctionnalites">Features</a></li>
+      <li><a href="#innovation">An Innovation</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#createur">Creator</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <select onchange="location = this.value;" class="lang-switch">
+          <option value="index_en.html" selected>🇬🇧 EN</option>
+          <option value="index.html">🇫🇷 FR</option>
+        </select>
+      </li>
+    </ul>
+  </header>
+
+  <!-- hero -->
+  <div class="hero reveal" id="accueil">
+    <canvas class="stars"></canvas>
+    <h1>
+      <span class="desktop-text">Enter the new era of decentralized blockchain</span>
+      <span class="mobile-text">zaalis, the reinvented blockchain</span>
+    </h1>
+    <button onclick="window.location='#contact'">Join us ↗</button>
+  </div>
+
+  <section id="vision" class="reveal">
+    <div class="section-flex">
+      <div class="section-image">
+        <img src="images/vision.jpg" alt="Illustration vision" />
+      </div>
+      <div class="section-text">
+        <h2>A new approach to blockchain</h2>
+        <p>
+          Existing blockchains are powerful but limited: they are rigid,
+          expensive to scale, and vulnerable to advanced attacks.
+        </p>
+        <p>
+          zaalis was born from a simple idea: create an infrastructure capable
+          of adapting, learning, and securing its own ecosystem.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="fonctionnalites" class="reveal">
+    <div class="section-flex reverse">
+      <div class="section-image">
+        <img src="images/fonctionnalites.jpg" alt="Illustration fonctionnalités" />
+      </div>
+      <div class="section-text">
+        <h2>What Zaalis offers today</h2>
+        <ul>
+          <li>🔐 Enhanced security: SHA-256 hashing + advanced behavior detection</li>
+          <li>📊 Behavioral analysis: each request is dynamically evaluated before validation</li>
+          <li>🌐 Intelligent P2P network: fast broadcasting and distributed validation</li>
+          <li>⚙️ Next-generation Go architecture: lightweight, fast, and modular</li>
+          <li>🧠 Built-in adaptability: a system designed to evolve based on network conditions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="innovation" class="reveal">
+    <div class="section-flex">
+      <div class="section-image">
+        <img src="images/innovation.jpg" alt="Technologie exclusive" />
+      </div>
+      <div class="section-text">
+        <h2>A never-before-seen innovation</h2>
+        <p>
+          zaalis integrates a unique proprietary technology designed to adapt and autonomously strengthen security.
+        </p>
+        <p>The details remain confidential until the patent is filed. It is exclusive to zaalis.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="architecture" class="reveal">
+    <div class="section-flex reverse">
+      <div class="section-image">
+        <img src="images/architecture.jpg" alt="Diagramme d’architecture" />
+      </div>
+      <div class="section-text">
+        <h2>A robust technical foundation</h2>
+        <ul>
+          <li>Written entirely in Go</li>
+          <li>Block generation with secure hashing</li>
+          <li>P2P networking and validated transfers</li>
+          <li>Active web interface</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="reveal">
+    <h2>Project Roadmap</h2>
+    <ul>
+      <li>T1 2026: Review of the project idea and technical choices, fixing existing bugs, adding new modules, company creation.
+      </li>
+      <li>T2 2026: Ongoing development of the project, gradual improvement of the architecture, feature additions, technical iterations.</li>
+      <li>T3 2026: Continued development, optimization, project structuring, preparation for the next stages</li>
+    </ul>
+  </section>
+
+  <section id="createur" class="reveal">
+    <h2>A project born from independence and passion</h2>
+    <p>
+      My name is Bryan, I’m 17 years old, and I built this entire blockchain alone,
+      without funding, using nothing but code and a strong vision of a decentralized future.
+    </p>
+    <p>zaalis is not just a project. It's a revolution.</p>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2>Contact</h2>
+    <p>
+      📧 Email : <a href="mailto:contact@zaalis.com">contact@zaalis.com</a><br />
+      🔗 GitHub : <a href="https://github.com/zaalis" target="_blank">@zaalis</a><br />
+      🔗 LinkedIn : <a href="https://www.linkedin.com/in/bryan-boquel-369275371" target="_blank">@bryan-boquel</a><br />
+      🐦 Twitter : <a href="https://twitter.com/zaalischain" target="_blank">@zaalischain</a>
+    </p>
+  </section>
+
+  <footer>
+    © 2026 zaalis — All reproduction is prohibited without authorization.<br />
+    Project founded and developed by Bryan — France.
+  </footer>
+
+
+  <!-- SVG nécessaire pour la distorsion Liquid Glass -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+    <defs>
+      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.001 0.008" numOctaves="2" seed="105" result="noise" />
+        <feGaussianBlur in="noise" stdDeviation="4" result="blurred" />
+        <feColorMatrix in="blurred" type="matrix" values="0 0 0 0 0.5  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"
+          result="corrected" />
+        <feDisplacementMap in="SourceGraphic" in2="corrected" scale="85" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+    </defs>
+  </svg>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
