@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zaalis | Neural Logistics</title>
+    <meta name="description"
+        content="Optimisez votre supply chain avec l'IA et la blockchain. Suivi temps réel, prédiction des flux, et sécurisation des données.">
+    <meta name="author" content="Bryan Boquel">
+    <meta name="keywords"
+        content="Bryan Boquel, Boquel, zaalis, blockchain, logistique, infrastructure, cyber sécurité, décentralisation">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zaalis.com/logistique.html">
+    <meta property="og:title" content="zaalis | Neural Logistics">
+    <meta property="og:description"
+        content="Optimisez votre supply chain avec l'IA et la blockchain. Suivi temps réel, prédiction des flux, et sécurisation des données.">
+    <meta property="og:image" content="image/logo-zaalis.jpg">
+
+    <!-- Structured Data: Person (SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Bryan Boquel",
+      "url": "https://zaalis.com",
+      "jobTitle": "Founder",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "zaalis"
+      },
+      "sameAs": [
+        "https://x.com/zaalischain",
+        "https://www.linkedin.com/in/bryan-boquel-369275371"
+      ]
+    }
+    </script>
+
+    <link rel="icon" type="image/ico" href="image/favicon-zaalis.ico">
+
+    <!-- Fonts: Inter (Corps) & Rajdhani (Titres Tech) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (Framework Utility) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zaalis: {
+                            black: '#050505',
+                            dark: '#0A0A0A',
+                            panel: '#121212',
+                            border: '#2A2A2A',
+                            text: '#E0E0E0',
+                            accent: '#00F0FF', // Cyber Cyan
+                            accentDim: 'rgba(0, 240, 255, 0.1)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Rajdhani', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)",
+                        'glow-radial': "radial-gradient(circle at center, rgba(0, 240, 255, 0.15) 0%, transparent 70%)"
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="antialiased font-sans selection:bg-zaalis-accent selection:text-black">
+    <!-- SVG nécessaire pour la distorsion Liquid Glass -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+        <defs>
+            <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.001 0.008" numOctaves="2" seed="105"
+                    result="noise" />
+                <feGaussianBlur in="noise" stdDeviation="4" result="blurred" />
+                <feColorMatrix in="blurred" type="matrix" values="0 0 0 0 0.5  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"
+                    result="corrected" />
+                <feDisplacementMap in="SourceGraphic" in2="corrected" scale="85" xChannelSelector="R"
+                    yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Navigation -->
+    <header>
+        <div class="burger-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="image/logo-zaalis.jpg" alt="Logo Zaalis" width="120" height="32" class="h-8 w-auto" />
+                </a>
+            </div>
+            <div class="burger-icon not-active" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul class="burger-menu" id="burgerMenu">
+            <li><a href="index.html" class="nav-link">Accueil</a></li>
+            <li><a href="blockchain.html" class="nav-link">Blockchain</a></li>
+            <li><a href="logistique.html" class="nav-link active">Logistique</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- MAIN CONTENT AREA (Dynamic Router) -->
+    <main id="app-root">
+        <!-- Hero Logistique -->
+        <section class="relative pt-40 pb-20 bg-zaalis-black min-h-[60vh] flex flex-col justify-center">
+            <div
+                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=2835&auto=format&fit=crop')] bg-cover bg-center opacity-20">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-zaalis-black via-zaalis-black/80 to-transparent">
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                <div class="flex items-center gap-4 mb-6 reveal">
+                    <div class="h-[1px] w-12 bg-zaalis-accent"></div>
+                    <span class="text-zaalis-accent uppercase tracking-[0.2em] text-xs font-bold">Neural Supply
+                        Chain</span>
+                </div>
+                <h1
+                    class="font-tech text-5xl md:text-7xl font-bold text-white mb-8 max-w-4xl uppercase leading-none reveal">
+                    Logistique <br> Autonome & Prédictive
+                </h1>
+                <p class="text-gray-300 text-lg max-w-2xl reveal">
+                    Ne réagissez plus aux ruptures. Anticipez-les. zaalis combine la Blockchain et l'IA pour
+                    créer une chaîne logistique intelligente.
+                </p>
+            </div>
+        </section>
+
+        <!-- Problem / Solution -->
+        <section class="py-24 bg-zaalis-dark">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="p-8 border border-red-900/30 bg-red-900/5 reveal">
+                        <h3 class="font-tech text-2xl text-red-500 font-bold mb-4 uppercase">Le Problème</h3>
+                        <ul class="space-y-4 text-gray-400">
+                            <li class="flex items-start gap-3"><span class="text-red-500">✕</span> Opacité des flux
+                                en
+                                temps réel</li>
+                            <li class="flex items-start gap-3"><span class="text-red-500">✕</span> Fraude
+                                documentaire
+                                et contrefaçon</li>
+                            <li class="flex items-start gap-3"><span class="text-red-500">✕</span> Inefficacités
+                                coûtant
+                                des milliards</li>
+                        </ul>
+                    </div>
+                    <div class="p-8 border border-zaalis-accent/30 bg-zaalis-accent/5 reveal"
+                        style="transition-delay: 100ms;">
+                        <h3 class="font-tech text-2xl text-zaalis-accent font-bold mb-4 uppercase">La Solution
+                            zaalis
+                        </h3>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-start gap-3"><span class="text-zaalis-accent">✓</span> Vue unifiée et
+                                en temps réel des données colis.</li>
+                            <li class="flex items-start gap-3"><span class="text-zaalis-accent">✓</span> Traçabilité
+                                totale et centralisation des données logistiques.</li>
+                            <li class="flex items-start gap-3"><span class="text-zaalis-accent">✓</span>Détection des
+                                anomalies et structuration des données par l’IA.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow Visual -->
+        <section class="py-24 overflow-hidden relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                <h2 class="font-tech text-4xl text-white font-bold mb-16 uppercase text-center reveal">Workflow
+                    Opérationnel</h2>
+
+                <div class="relative">
+                    <!-- Connecting Line -->
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-800 -translate-y-1/2">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <!-- Step 1 -->
+                        <div
+                            class="relative bg-zaalis-black border border-white/10 p-6 text-center group hover:border-zaalis-accent transition-colors reveal">
+                            <div
+                                class="w-12 h-12 bg-zaalis-panel border border-white/20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:border-zaalis-accent group-hover:text-zaalis-accent transition-all">
+                                1</div>
+                            <h4 class="text-white font-bold uppercase mb-2">Création du colis</h4>
+                            <p class="text-xs text-gray-500">Le colis est généré via le formulaire zaalis et enregistré
+                                dans le réseau P2P.
+                            </p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative bg-zaalis-black border border-white/10 p-6 text-center group hover:border-zaalis-accent transition-colors reveal"
+                            style="transition-delay: 100ms;">
+                            <div
+                                class="w-12 h-12 bg-zaalis-panel border border-white/20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:border-zaalis-accent group-hover:text-zaalis-accent transition-all">
+                                2</div>
+                            <h4 class="text-white font-bold uppercase mb-2">Enregistrement blockchain</h4>
+                            <p class="text-xs text-gray-500">Chaque colis est inscrit dans le registre inviolable de
+                                zaalis Chain, garantissant intégrité et traçabilité.</p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative bg-zaalis-black border border-white/10 p-6 text-center group hover:border-zaalis-accent transition-colors reveal"
+                            style="transition-delay: 200ms;">
+                            <div
+                                class="w-12 h-12 bg-zaalis-panel border border-white/20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:border-zaalis-accent group-hover:text-zaalis-accent transition-all">
+                                3</div>
+                            <h4 class="text-white font-bold uppercase mb-2">Suivi en temps réel</h4>
+                            <p class="text-xs text-gray-500">Les informations du colis sont récupérées via API et mises
+                                à jour instantanément.</p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="relative bg-zaalis-black border border-white/10 p-6 text-center group hover:border-zaalis-accent transition-colors reveal"
+                            style="transition-delay: 300ms;">
+                            <div
+                                class="w-12 h-12 bg-zaalis-panel border border-white/20 rounded-full flex items-center justify-center mx-auto mb-6 relative z-10 group-hover:border-zaalis-accent group-hover:text-zaalis-accent transition-all">
+                                4</div>
+                            <h4 class="text-white font-bold uppercase mb-2">Analyse intelligente</h4>
+                            <p class="text-xs text-gray-500">L’IA trie et organise les données pour offrir une
+                                visualisation claire et détecter les anomalies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 text-center reveal">
+            <a href="contact.html"
+                class="group relative inline-block px-10 py-4 bg-white text-black font-bold tracking-widest uppercase text-sm overflow-hidden hover:bg-gray-200 transition-all">
+                <span class="relative z-10">Nous Contacter</span>
+                <div
+                    class="absolute inset-0 bg-zaalis-accent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300">
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="border-t border-white/10 bg-zaalis-black pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <span class="font-tech font-bold text-2xl tracking-[0.2em] text-white block mb-6">zaalis</span>
+                    <p class="text-gray-400 text-sm max-w-sm leading-relaxed">
+                        Redéfinir les standards de l'infrastructure numérique et physique.
+                        Sécurité souveraine. Logistique autonome.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-tech font-bold text-lg text-white mb-6 uppercase tracking-wider">Plateforme</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="blockchain.html" class="hover:text-zaalis-accent transition-colors">Blockchain
+                                Core</a>
+                        </li>
+                        <li><a href="logistique.html" class="hover:text-zaalis-accent transition-colors">Neural
+                                Logistics</a></li>
+                        <li><a href="#" class="hover:text-zaalis-accent transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-tech font-bold text-lg text-white mb-6 uppercase tracking-wider">Société</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-zaalis-accent transition-colors">À propos</a></li>
+                        <li><a href="#" class="hover:text-zaalis-accent transition-colors">Carrières</a></li>
+                        <li><a href="contact.html" class="hover:text-zaalis-accent transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 uppercase tracking-wider">
+                <p>&copy; 2026 zaalis. Tous droits réservés.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-gray-500">
+                    <a href="https://github.com/zaalis" target="_blank"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="GitHub">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/bryan-boquel-369275371" target="_blank"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://x.com/zaalischain" target="_blank"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="Twitter / X">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="mailto:contact@zaalis.com"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="Email">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Application Logic -->
+    <script src="script.js?v=3"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zaalis | Blockchain Architecture</title>
+    <meta name="description"
+        content="Découvrez l'architecture blockchain de zaalis. Protocole P2P haute fréquence, consensus Proof of Authority, et sécurité quantique.">
+    <meta name="author" content="Bryan Boquel">
+    <meta name="keywords"
+        content="Bryan Boquel, Boquel, zaalis, blockchain, logistique, infrastructure, cyber sécurité, décentralisation">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zaalis.com/blockchain.html">
+    <meta property="og:title" content="zaalis | Blockchain Architecture">
+    <meta property="og:description"
+        content="Découvrez l'architecture blockchain de zaalis. Protocole P2P haute fréquence, consensus Proof of Authority, et sécurité quantique.">
+    <meta property="og:image" content="image/logo-zaalis.jpg">
+
+    <!-- Structured Data: Person (SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Bryan Boquel",
+      "url": "https://zaalis.com",
+      "jobTitle": "Founder",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "zaalis"
+      },
+      "sameAs": [
+        "https://x.com/zaalischain",
+        "https://www.linkedin.com/in/bryan-boquel-369275371"
+      ]
+    }
+    </script>
+
+    <link rel="icon" type="image/ico" href="image/favicon-zaalis.ico">
+
+    <!-- Fonts: Inter (Corps) & Rajdhani (Titres Tech) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (Framework Utility) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zaalis: {
+                            black: '#050505',
+                            dark: '#0A0A0A',
+                            panel: '#121212',
+                            border: '#2A2A2A',
+                            text: '#E0E0E0',
+                            accent: '#00F0FF', // Cyber Cyan
+                            accentDim: 'rgba(0, 240, 255, 0.1)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Rajdhani', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)",
+                        'glow-radial': "radial-gradient(circle at center, rgba(0, 240, 255, 0.15) 0%, transparent 70%)"
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="antialiased font-sans selection:bg-zaalis-accent selection:text-black">
+    <!-- SVG nécessaire pour la distorsion Liquid Glass -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+        <defs>
+            <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.001 0.008" numOctaves="2" seed="105"
+                    result="noise" />
+                <feGaussianBlur in="noise" stdDeviation="4" result="blurred" />
+                <feColorMatrix in="blurred" type="matrix" values="0 0 0 0 0.5  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"
+                    result="corrected" />
+                <feDisplacementMap in="SourceGraphic" in2="corrected" scale="85" xChannelSelector="R"
+                    yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Navigation -->
+    <header>
+        <div class="burger-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="image/logo-zaalis.jpg" alt="Logo Zaalis" width="120" height="32" class="h-8 w-auto" />
+                </a>
+            </div>
+            <div class="burger-icon not-active" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul class="burger-menu" id="burgerMenu">
+            <li><a href="index.html" class="nav-link">Accueil</a></li>
+            <li><a href="blockchain.html" class="nav-link active">Blockchain</a></li>
+            <li><a href="logistique.html" class="nav-link">Logistique</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- MAIN CONTENT AREA (Dynamic Router) -->
+    <main id="app-root">
+        <!-- Hero Blockchain -->
+        <section class="relative pt-40 pb-20 bg-zaalis-black overflow-hidden">
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-zaalis-accent/5 to-transparent">
+            </div>
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                <div class="text-zaalis-accent font-mono text-sm mb-4 reveal">/// ZAALIS-CHAIN PROTOCOL V.2.0</div>
+                <h1 class="font-tech text-6xl md:text-8xl font-bold text-white mb-6 uppercase reveal">Trust
+                    <br>Through
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-zaalis-accent to-blue-600">Code</span>
+                </h1>
+                <p class="text-gray-400 text-xl max-w-2xl mb-10 reveal">
+                    Une infrastructure blockchain sur mesure pour répondre aux exigences des clients.
+                </p>
+                <div class="flex gap-4 reveal">
+                    <button
+                        class="px-6 py-3 border border-white/20 text-white text-xs font-bold uppercase tracking-widest hover:border-zaalis-accent transition-colors">Whitepaper</button>
+                    <button
+                        class="px-6 py-3 border border-white/20 text-white text-xs font-bold uppercase tracking-widest hover:border-zaalis-accent transition-colors">Explorer
+                        Testnet</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Specs Grid -->
+        <section class="py-20 bg-zaalis-panel border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-6 border-l border-zaalis-accent/30 bg-white/5 reveal">
+                        <h4 class="text-gray-500 uppercase text-xs font-bold tracking-widest mb-2">Consensus</h4>
+                        <p class="text-white font-tech text-xl">Proof of Authority</p>
+                    </div>
+                    <div class="p-6 border-l border-zaalis-accent/30 bg-white/5 reveal"
+                        style="transition-delay: 100ms;">
+                        <h4 class="text-gray-500 uppercase text-xs font-bold tracking-widest mb-2">Réseau P2P</h4>
+                        <p class="text-white font-tech text-xl">diffusion rapide</p>
+                    </div>
+                    <div class="p-6 border-l border-zaalis-accent/30 bg-white/5 reveal"
+                        style="transition-delay: 200ms;">
+                        <h4 class="text-gray-500 uppercase text-xs font-bold tracking-widest mb-2">Finalité</h4>
+                        <p class="text-white font-tech text-xl">&lt; 0.4ms en local</p>
+                    </div>
+                    <div class="p-6 border-l border-zaalis-accent/30 bg-white/5 reveal"
+                        style="transition-delay: 300ms;">
+                        <h4 class="text-gray-500 uppercase text-xs font-bold tracking-widest mb-2">Sécurité</h4>
+                        <p class="text-white font-tech text-xl">hashing SHA-256</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deep Dive Sections -->
+        <section class="py-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-32">
+
+                <!-- Security -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center reveal">
+                    <div>
+                        <h2 class="font-tech text-4xl text-white font-bold mb-6 uppercase">Architecture Blindée</h2>
+                        <p class="text-gray-400 leading-relaxed mb-6">
+                            zaalis Blockchain n’est pas un fork. C’est une infrastructure développée from scratch,
+                            construite pour résister aux contraintes réelles : charge, attaques, et fiabilité réseau.
+                        </p>
+                        <ul class="space-y-3 text-gray-500 font-mono text-sm">
+                            <li class="flex items-center gap-3"><span class="text-zaalis-accent">>></span>
+                                Transactions privées, vérifiables</li>
+                            <li class="flex items-center gap-3"><span class="text-zaalis-accent">>></span>
+                                Données chiffrées de bout en bout</li>
+                            <li class="flex items-center gap-3"><span class="text-zaalis-accent">>></span> Identité
+                                sécurisée, contrôlée par l’utilisateur</li>
+                        </ul>
+                    </div>
+                    <div class="relative h-96 border border-white/10 rounded-sm overflow-hidden bg-zaalis-panel">
+                        <img src="image/Architecture-Blindée.png" alt="Architecture Blindée" width="800" height="384"
+                            class="w-full h-full object-cover" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Use Cases -->
+                <div class="reveal">
+                    <h2 class="font-tech text-4xl text-white font-bold mb-12 uppercase text-center">Use Cases
+                        Stratégiques</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div
+                            class="bg-white/5 p-8 border border-white/5 hover:border-zaalis-accent/50 transition-colors">
+                            <h3 class="text-white font-bold text-lg mb-2">Infrastructure de transactions à haute
+                                performance</h3>
+                            <p class="text-gray-500 text-sm">Traitement rapide et fiable des transactions, conçu pour
+                                des environnements à forte charge.</p>
+                        </div>
+                        <div
+                            class="bg-white/5 p-8 border border-white/5 hover:border-zaalis-accent/50 transition-colors">
+                            <h3 class="text-white font-bold text-lg mb-2">Registre immuable et auditabilité</h3>
+                            <p class="text-gray-500 text-sm">Historique infalsifiable des opérations, avec traçabilité
+                                complète et vérification indépendante.</p>
+                        </div>
+                        <div
+                            class="bg-white/5 p-8 border border-white/5 hover:border-zaalis-accent/50 transition-colors">
+                            <h3 class="text-white font-bold text-lg mb-2">Sécurité adaptative pilotée par IA</h3>
+                            <p class="text-gray-500 text-sm">Détection et blocage en temps réel des comportements
+                                anormaux, directement au niveau du réseau.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Roadmap -->
+                <div class="reveal">
+                    <h2 class="font-tech text-4xl text-white font-bold mb-12 uppercase text-left">Roadmap</h2>
+                    <div class="border-l-2 border-white/10 ml-4 space-y-12">
+                        <div class="pl-8 relative">
+                            <div
+                                class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-zaalis-accent shadow-[0_0_10px_#00F0FF]">
+                            </div>
+                            <h4 class="text-white font-bold uppercase tracking-widest">T1 2026 - </h4>
+                            <p class="text-gray-500 mt-2">Revue de l’idée du projet et des choix techniques, corrections
+                                de bugs existants, ajout de nouveaux modules, création de l’entreprise.</p>
+                        </div>
+                        <div class="pl-8 relative">
+                            <div
+                                class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-gray-700 border border-gray-500">
+                            </div>
+                            <h4 class="text-gray-400 font-bold uppercase tracking-widest">T2 2026 -
+                            </h4>
+                            <p class="text-gray-600 mt-2">Développement continu du projet, amélioration progressive de
+                                l’architecture, ajout de fonctionnalités, itérations techniques.
+                            </p>
+                        </div>
+                        <div class="pl-8 relative">
+                            <div
+                                class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-gray-700 border border-gray-500">
+                            </div>
+                            <h4 class="text-gray-400 font-bold uppercase tracking-widest">T3 2026 -
+                            </h4>
+                            <p class="text-gray-600 mt-2">Poursuite du développement, optimisation, structuration du
+                                projet, préparation des prochaines étapes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="border-t border-white/10 bg-zaalis-black pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <span class="font-tech font-bold text-2xl tracking-[0.2em] text-white block mb-6">zaalis</span>
+                    <p class="text-gray-400 text-sm max-w-sm leading-relaxed">
+                        Redéfinir les standards de l'infrastructure numérique et physique.
+                        Sécurité souveraine. Logistique autonome.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-tech font-bold text-lg text-white mb-6 uppercase tracking-wider">Plateforme</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="blockchain.html" class="hover:text-zaalis-accent transition-colors">Blockchain
+                                Core</a>
+                        </li>
+                        <li><a href="logistique.html" class="hover:text-zaalis-accent transition-colors">Neural
+                                Logistics</a></li>
+                        <li><a href="#" class="hover:text-zaalis-accent transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-tech font-bold text-lg text-white mb-6 uppercase tracking-wider">Société</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-zaalis-accent transition-colors">À propos</a></li>
+                        <li><a href="#" class="hover:text-zaalis-accent transition-colors">Carrières</a></li>
+                        <li><a href="contact.html" class="hover:text-zaalis-accent transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 uppercase tracking-wider">
+                <p>&copy; 2026 zaalis. Tous droits réservés.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-gray-500">
+                    <a href="https://github.com/zaalis" target="_blank"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="GitHub">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/bryan-boquel-369275371" target="_blank"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://x.com/zaalischain" target="_blank"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="Twitter / X">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="mailto:contact@zaalis.com"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="Email">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Application Logic -->
+    <script src="script.js?v=3"></script>
+
+</body>
+
+</html>

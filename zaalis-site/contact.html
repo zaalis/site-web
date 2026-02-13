@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zaalis | Contact & Partenariats</title>
+    <meta name="description"
+        content="Prenez contact avec zaalis. Partenariats stratégiques, intégration technologique et relations investisseurs.">
+    <meta name="author" content="Bryan Boquel">
+    <meta name="keywords"
+        content="Bryan Boquel, Boquel, zaalis, blockchain, logistique, infrastructure, cyber sécurité, décentralisation">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zaalis.com/contact.html">
+    <meta property="og:title" content="zaalis | Contact & Partenariats">
+    <meta property="og:description"
+        content="Prenez contact avec zaalis. Partenariats stratégiques, intégration technologique et relations investisseurs.">
+    <meta property="og:image" content="image/logo-zaalis.jpg">
+
+    <!-- Structured Data: Person (SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Bryan Boquel",
+      "url": "https://zaalis.com",
+      "jobTitle": "Founder",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "zaalis"
+      },
+      "sameAs": [
+        "https://x.com/zaalischain",
+        "https://www.linkedin.com/in/bryan-boquel-369275371"
+      ]
+    }
+    </script>
+
+    <link rel="icon" type="image/ico" href="image/favicon-zaalis.ico">
+
+    <!-- Fonts: Inter (Corps) & Rajdhani (Titres Tech) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (Framework Utility) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zaalis: {
+                            black: '#050505',
+                            dark: '#0A0A0A',
+                            panel: '#121212',
+                            border: '#2A2A2A',
+                            text: '#E0E0E0',
+                            accent: '#00F0FF', // Cyber Cyan
+                            accentDim: 'rgba(0, 240, 255, 0.1)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Rajdhani', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1a1a1a 1px, transparent 1px), linear-gradient(to bottom, #1a1a1a 1px, transparent 1px)",
+                        'glow-radial': "radial-gradient(circle at center, rgba(0, 240, 255, 0.15) 0%, transparent 70%)"
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="antialiased font-sans selection:bg-zaalis-accent selection:text-black">
+    <!-- SVG nécessaire pour la distorsion Liquid Glass -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+        <defs>
+            <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.001 0.008" numOctaves="2" seed="105"
+                    result="noise" />
+                <feGaussianBlur in="noise" stdDeviation="4" result="blurred" />
+                <feColorMatrix in="blurred" type="matrix" values="0 0 0 0 0.5  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"
+                    result="corrected" />
+                <feDisplacementMap in="SourceGraphic" in2="corrected" scale="85" xChannelSelector="R"
+                    yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Navigation -->
+    <header>
+        <div class="burger-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="image/logo-zaalis.jpg" alt="Logo Zaalis" width="120" height="32" class="h-8 w-auto" />
+                </a>
+            </div>
+            <div class="burger-icon not-active" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <ul class="burger-menu" id="burgerMenu">
+            <li><a href="index.html" class="nav-link">Accueil</a></li>
+            <li><a href="blockchain.html" class="nav-link">Blockchain</a></li>
+            <li><a href="logistique.html" class="nav-link">Logistique</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- MAIN CONTENT AREA (Dynamic Router) -->
+    <main id="app-root">
+        <section class="min-h-screen pt-40 pb-20 relative">
+
+            <div class="max-w-3xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-16 reveal">
+                    <h1 class="font-tech text-5xl md:text-6xl font-bold text-white mb-4 uppercase">Initier le
+                        contact
+                    </h1>
+                    <p class="text-gray-400">Pour les partenariats stratégiques et demandes techniques.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+                    <!-- Email Card -->
+                    <a href="mailto:contact@zaalis.com"
+                        class="group glass-panel p-8 border border-white/5 hover:border-zaalis-accent/50 transition-all duration-500">
+                        <div class="flex items-center gap-6">
+                            <div
+                                class="w-14 h-14 rounded-full bg-zaalis-accent/10 flex items-center justify-center text-zaalis-accent group-hover:bg-zaalis-accent group-hover:text-black transition-all duration-500">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-tech text-white uppercase tracking-widest text-sm mb-1">Email</h3>
+                                <p class="text-gray-400 group-hover:text-white transition-colors">contact@zaalis.com</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Twitter (X) Card -->
+                    <a href="https://x.com/zaalischain" target="_blank"
+                        class="group glass-panel p-8 border border-white/5 hover:border-zaalis-accent/50 transition-all duration-500">
+                        <div class="flex items-center gap-6">
+                            <div
+                                class="w-14 h-14 rounded-full bg-zaalis-accent/10 flex items-center justify-center text-zaalis-accent group-hover:bg-zaalis-accent group-hover:text-black transition-all duration-500">
+                                <i data-lucide="twitter" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-tech text-white uppercase tracking-widest text-sm mb-1">Twitter / X</h3>
+                                <p class="text-gray-400 group-hover:text-white transition-colors">@zaalischain</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- LinkedIn Card -->
+                    <a href="https://www.linkedin.com/in/bryan-boquel-369275371" target="_blank"
+                        class="group glass-panel p-8 border border-white/5 hover:border-zaalis-accent/50 transition-all duration-500">
+                        <div class="flex items-center gap-6">
+                            <div
+                                class="w-14 h-14 rounded-full bg-zaalis-accent/10 flex items-center justify-center text-zaalis-accent group-hover:bg-zaalis-accent group-hover:text-black transition-all duration-500">
+                                <i data-lucide="linkedin" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-tech text-white uppercase tracking-widest text-sm mb-1">LinkedIn</h3>
+                                <p class="text-gray-400 group-hover:text-white transition-colors">Bryan Boquel</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- GitHub Card -->
+                    <a href="https://github.com/zaalis" target="_blank"
+                        class="group glass-panel p-8 border border-white/5 hover:border-zaalis-accent/50 transition-all duration-500">
+                        <div class="flex items-center gap-6">
+                            <div
+                                class="w-14 h-14 rounded-full bg-zaalis-accent/10 flex items-center justify-center text-zaalis-accent group-hover:bg-zaalis-accent group-hover:text-black transition-all duration-500">
+                                <i data-lucide="github" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-tech text-white uppercase tracking-widest text-sm mb-1">GitHub</h3>
+                                <p class="text-gray-400 group-hover:text-white transition-colors">zaalis</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="border-t border-white/10 bg-zaalis-black pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <span class="font-tech font-bold text-2xl tracking-[0.2em] text-white block mb-6">zaalis</span>
+                    <p class="text-gray-400 text-sm max-w-sm leading-relaxed">
+                        Redéfinir les standards de l'infrastructure numérique et physique.
+                        Sécurité souveraine. Logistique autonome.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-tech font-bold text-lg text-white mb-6 uppercase tracking-wider">Plateforme</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="blockchain.html" class="hover:text-zaalis-accent transition-colors">Blockchain
+                                Core</a>
+                        </li>
+                        <li><a href="logistique.html" class="hover:text-zaalis-accent transition-colors">Neural
+                                Logistics</a></li>
+                        <li><a href="#" class="hover:text-zaalis-accent transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-tech font-bold text-lg text-white mb-6 uppercase tracking-wider">Société</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-zaalis-accent transition-colors">À propos</a></li>
+                        <li><a href="#" class="hover:text-zaalis-accent transition-colors">Carrières</a></li>
+                        <li><a href="contact.html" class="hover:text-zaalis-accent transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 uppercase tracking-wider">
+                <p>&copy; 2026 zaalis. Tous droits réservés.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0 text-gray-500">
+                    <a href="https://github.com/zaalis" target="_blank"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="GitHub">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/bryan-boquel-369275371" target="_blank"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://x.com/zaalischain" target="_blank"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="Twitter / X">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                    <a href="mailto:contact@zaalis.com"
+                        class="hover:text-white transition-colors flex items-center justify-center w-5 h-5"
+                        title="Email">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Application Logic -->
+    <script src="script.js?v=3"></script>
+
+</body>
+
+</html>
